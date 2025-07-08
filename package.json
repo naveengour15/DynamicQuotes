@@ -1,0 +1,15 @@
+{
+  "name": "dynamic-quotes",
+  "version": "1.0.0",
+  "description": "Dynamic quotes reading from Api and show result one by one using JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gh repo clone naveengour15/DynamicQuotes"
+  },
+  "author": "Naveen Gour",
+  "license": "ISC"
+}

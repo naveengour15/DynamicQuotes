@@ -1,0 +1,23 @@
+Dynamic quotes reading from api and show result one by one using JavaScript
+
+Signup on https://api-ninjas.com/
+
+Get api from 
+URL =  https://api-ninjas.com/api/quotes
+
+Set api_url  = https://api.api-ninjas.com/v1/quotes
+
+Set X-Api-Key = aKlo6bxq/7Mwrbexjdg0yg==QMMkDYZ72nmoosG4
+
+Fetch api from your code 
+
+convert data json format
+
+look like
+[
+  {
+    "quote": "The will of man is his happiness.",
+    "author": "Friedrich Schiller",
+    "category": "happiness"
+  }
+]

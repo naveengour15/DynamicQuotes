@@ -1,0 +1,147 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>dynamic-quotes</title>
+
+<style>
+ *{margin:0; padding: 0; box-sizing: border-box;}
+
+ .quotes{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2, 0, 36,1) 0%, rgba(0,235,102,0.8575805322128851) 0%, rgba(30, 143, 170, 0.781950281120448) 100%)
+    }
+    
+.blockquote {
+    padding: 60px 80px 40px;
+    position: relative;
+}
+.blockquote p {
+    font-family: "Utopia-italic";
+    font-size: 35px;
+    font-weight: 700px;
+    text-align: center;
+}
+
+.blockquote:before {
+  position: absolute;
+  font-family: 'FontAwesome';
+  top: 0;
+  
+  content:"\f10d";
+  font-size: 200px;
+  color: rgba(0,0,0,0.1);
+   
+}
+
+.blockquote::after {
+    content: "";
+    top: 20px;
+    left: 50%;
+    margin-left: -100px;
+    position: absolute;
+    border-bottom: 3px solid #bf0024;
+    height: 3px;
+    width: 200px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic);
+.otro-blockquote{
+  font-size: 1.4em;
+  width:60%;
+  margin:50px auto;
+  font-family:Open Sans;
+  font-style:italic;
+  color: #555555;
+  padding:1.2em 30px 1.2em 75px;
+  border-left:8px solid #78C0A8 ;
+  line-height:1.6;
+  position: relative;
+  background:#EDEDED;
+}
+
+.otro-blockquote::before{
+  font-family:Arial;
+  content: "\201C";
+  color:#78C0A8;
+  font-size:4em;
+  position: absolute;
+  left: 10px;
+  top:-10px;
+}
+
+.otro-blockquote::after{
+  content: '';
+}
+
+.otro-blockquote span{
+  display:block;
+  color:#333333;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:1em;
+}
+
+#nextQuotes{
+    width: 400px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #00b894;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+}
+#nextQuotes:hover{
+    color: #00b894;
+    background: white;
+    border: 2px solid #00b894;
+    cursor: pointer;
+}
+</style>
+</head>
+<body class="bg-light">
+    <div class="quotes">
+       
+        <blockquote class="otro-blockquote">
+            <span id="quote">
+                Only the pure in heart can make a good soup.
+            </span>    
+            <span id="author">Ludwig van Beethoven</span>
+        </blockquote>
+        <button id="nextQuotes">New Quotes</button>
+    </div>        
+<script>
+    const quote = document.getElementById("quote");
+    const author = document.getElementById("author");
+    const nextQuotes = document.getElementById("nextQuotes");
+    const getQuotes = async () => {
+        quote.innerText = 'Loading...';
+        author.innerText = '';
+        const key = "aKlo6bxq/7Mwrbexjdg0yg==QMMkDYZ72nmoosG4";
+        //limit=200,000  for  premium users
+        // 100 quotes is free
+        const api = "https://api.api-ninjas.com/v1/quotes?X-Api-Key="+key;
+        try{ 
+            let data = await fetch(api);
+            let realData = await data.json();
+            let quoteData = realData[0];
+            quote.innerText = quoteData.quote;
+            author.innerText = quoteData.author;
+
+        } catch (error){
+            console.log(error);
+        }
+    }
+
+    nextQuotes.addEventListener('click', getQuotes);
+</script>
+</body>
+</html>
